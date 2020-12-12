@@ -65,6 +65,12 @@ n_iterations = 1000
 
 optimized_thetas,cost = MLR.gradientDescent(x,y,thetas,alpha,n_iterations)
 
+def hypothesis(theta, X):
+    return X*theta.T
+
+y_hat = hypothesis(optimized_thetas, x)
+y_hat = np.sum(y_hat, axis=1)
+
 print("\noptimized thetas = ")
 print(optimized_thetas)
 
@@ -77,6 +83,24 @@ ax.set_xlabel('Iterations')
 ax.set_ylabel('Cost')
 ax.set_title('Error vs. Training Epoch')
 
+
+
+
+#=========================================================================
+# get best fit line
+fig, ax2 = plt.subplots(figsize=(5,5))
+
+ax2.scatter(file_data.id, file_data.price, label='Traning Data')
+#ax2.scatter(file_data.id, y_hat, label='predicted Data')
+
+
+ax2.legend(loc=2)
+
+ax2.set_xlabel('room')
+ax2.set_ylabel('price')
+ax2.set_title('Predicted Profit vs. Population Size') 
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 def predict_price(inputs):
@@ -107,4 +131,6 @@ def predict_price(inputs):
 
 #48992470760.25859
 #92349754598.17032
+    
+
 
