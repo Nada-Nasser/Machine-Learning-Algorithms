@@ -19,16 +19,16 @@ file_data = pd.read_csv(path, skipinitialspace=True)
 input_data = file_data[input_fields]
 output_data = file_data[output_fields]
 
-print("\ninput data (Xs) : ")
-print(input_data.head(10))
-print("\ntarget data (Ys) : ")
-print(output_data.head(10))
+#print("\ninput data (Xs) : ")
+#print(input_data.head(10))
+#print("\ntarget data (Ys) : ")
+#print(output_data.head(10))
 
 
 # rescaling data
 input_data = (input_data - input_data.mean()) / input_data.std()
 
-print(input_data.head(10))
+#print(input_data.head(10))
 
 
 # add ones column
@@ -63,42 +63,51 @@ n_iterations = 1000
 #
 #print(x[0].shape)
 
-optimized_thetas,cost = MLR.gradientDescent(x,y,thetas,alpha,n_iterations)
+print(x.shape)
+print(y.shape)
+print(thetas.shape)
 
-def hypothesis(theta, X):
-    return X*theta.T
-
-y_hat = hypothesis(optimized_thetas, x)
-y_hat = np.sum(y_hat, axis=1)
-
-print("\noptimized thetas = ")
-print(optimized_thetas)
-
-#print(cost)
-
-# draw error graph
-fig, ax = plt.subplots(figsize=(5,5))
-ax.plot(np.arange(n_iterations), cost, 'r')
-ax.set_xlabel('Iterations')
-ax.set_ylabel('Cost')
-ax.set_title('Error vs. Training Epoch')
+print(x.head(10))
+print(y.head(10))
+print(thetas)
 
 
-
-
-#=========================================================================
-# get best fit line
-fig, ax2 = plt.subplots(figsize=(5,5))
-
-ax2.scatter(file_data.id, file_data.price, label='Traning Data')
-#ax2.scatter(file_data.id, y_hat, label='predicted Data')
-
-
-ax2.legend(loc=2)
-
-ax2.set_xlabel('room')
-ax2.set_ylabel('price')
-ax2.set_title('Predicted Profit vs. Population Size') 
+#optimized_thetas,cost = MLR.gradientDescent(x,y,thetas,alpha,n_iterations)
+#
+#def hypothesis(theta, X):
+#    return X*theta.T
+#
+#y_hat = hypothesis(optimized_thetas, x)
+#y_hat = np.sum(y_hat, axis=1)
+#
+#print("\noptimized thetas = ")
+#print(optimized_thetas)
+#
+##print(cost)
+#
+## draw error graph
+#fig, ax = plt.subplots(figsize=(5,5))
+#ax.plot(np.arange(n_iterations), cost, 'r')
+#ax.set_xlabel('Iterations')
+#ax.set_ylabel('Cost')
+#ax.set_title('Error vs. Training Epoch')
+#
+#
+#
+#
+##=========================================================================
+## get best fit line
+#fig, ax2 = plt.subplots(figsize=(5,5))
+#
+#ax2.scatter(file_data.id, file_data.price, label='Traning Data')
+##ax2.scatter(file_data.id, y_hat, label='predicted Data')
+#
+#
+#ax2.legend(loc=2)
+#
+#ax2.set_xlabel('room')
+#ax2.set_ylabel('price')
+#ax2.set_title('Predicted Profit vs. Population Size') 
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
