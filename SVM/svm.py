@@ -5,12 +5,12 @@ from mpl_toolkits.mplot3d import Axes3D
 from SVM.gradient_descent import *
 
 
-# input_fields = ['age','sex','cp','trestbps','chol','fbs','restecg','thalach','exang','oldpeak','slope','ca','thal']
-input_fields = ['trestbps', 'chol', 'thalach', 'oldpeak']
+input_fields = ['age','sex','cp','trestbps','chol','fbs','restecg','thalach','exang']
+# input_fields = ['trestbps', 'chol', 'thalach', 'oldpeak']
 
 output_fields = ['target']
 path = "train.csv"
-
+# path = "heart.csv"
 
 file_data = pd.read_csv(path, skipinitialspace=True)
 input_data = file_data[input_fields]
@@ -29,7 +29,7 @@ w = np.array([0] * len(x.columns))  # [ 0 0 0]
 
 # alpha = 0.0001
 alpha = 0.00005
-n_iterations = 500
+n_iterations = 700
 lmda = 0
 
 w, cost = gradient_descent(x, y, w, alpha, lmda, n_iterations)
@@ -93,5 +93,4 @@ def predict_price(inputs):
 
 
 predict_price('test.csv')
-
 
